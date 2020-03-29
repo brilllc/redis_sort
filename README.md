@@ -46,8 +46,43 @@ OK
  - 根据upNum 倒序，cmtNum倒序，addTime 正序
 
  - 根据upNum 倒序，cmtNum倒序，addTime 倒序
- 
 
 
+127.0.0.1:6379> hset vidsort-1 timedesc 12
 
+(integer) 1
+
+127.0.0.1:6379> hset vidsort-1 timeasc 12
+
+(integer) 1
+
+127.0.0.1:6379> hset vidsort-2 timedesc 22
+
+(integer) 1
+
+127.0.0.1:6379> hset vidsort-2 timeasc 32
+
+(integer) 1
+127.0.0.1:6379>
+
+使用：
+
+127.0.0.1:6379> sort vids by vidsort-*->timedesc
+
+1) "3"
+2) "4"
+3) "1"
+4) "2"
+
+127.0.0.1:6379> sort vids by vidsort-*->timedasc
+
+1) "1"
+2) "2"
+3) "3"
+4) "4"
+
+127.0.0.1:6379> sort vids by vidsort-*->timedasc limit 0 2
+
+1) "1"
+2) "2"
 
