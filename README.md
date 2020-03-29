@@ -9,7 +9,7 @@ Redis: list, set/hset
 
 实现思路：
 
-存一个list, 里面存入的是 id列表
+存一个list, 里面存入的是 id列表，本例在查询时只取ID，拿到ID集合后，根据ID去取视频详情
 
 如：
 
@@ -17,7 +17,7 @@ Redis: list, set/hset
 
 (integer) 4
 
-另一个 set 存所需要的排序，
+(1) set 存所需要的排序
 
 如：
 
@@ -39,8 +39,14 @@ OK
 
 注：vid-id（id与list中存入的id一致），set只能存单一的某个（或多个字段其中一个组合的）条件排序
 
-hset
+(2) hset 可以存多个字段（多种排序组合）
 
+如：
+
+ - 根据upNum 倒序，cmtNum倒序，addTime 正序
+
+ - 根据upNum 倒序，cmtNum倒序，addTime 倒序
+ 
 
 
 
